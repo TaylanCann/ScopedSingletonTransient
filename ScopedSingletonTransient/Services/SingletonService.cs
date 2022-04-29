@@ -1,6 +1,21 @@
-﻿namespace ScopedSingletonTransient.Services
+﻿using System;
+
+namespace ScopedSingletonTransient.Services
 {
-    public class SingletonService
+    public interface ISingletonService : IService { }
+    public class SingletonService : ISingletonService
     {
+        private string _guid;
+
+        public SingletonService()
+        {
+            _guid = Guid.NewGuid().ToString();
+        }
+
+        public string GetGuid()
+        {
+            return _guid;
+        }
+
     }
 }
